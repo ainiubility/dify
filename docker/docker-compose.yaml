@@ -713,7 +713,7 @@ services:
                -c 'maintenance_work_mem=${POSTGRES_MAINTENANCE_WORK_MEM:-64MB}'
                -c 'effective_cache_size=${POSTGRES_EFFECTIVE_CACHE_SIZE:-4096MB}'
     volumes:
-      - ./volumes/db/data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     healthcheck:
       test:
         [
@@ -1372,3 +1372,5 @@ networks:
 volumes:
   oradata:
   dify_es01_data:
+  # please set a host path to store the data of milvus if you want to keep the data after restarting the container.
+  pgdata:
